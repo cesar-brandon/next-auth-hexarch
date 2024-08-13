@@ -42,11 +42,11 @@ export function SignInCard() {
         </div>
         <CredentialsSignInForm />
       </CardContent>
-      <CardFooter>
-        <Button size="lg" className="w-full">
-          Sign In
-        </Button>
-      </CardFooter>
+      {/* <CardFooter> */}
+      {/*   <Button size="lg" className="w-full"> */}
+      {/*     Sign In */}
+      {/*   </Button> */}
+      {/* </CardFooter> */}
     </Card>
   );
 }
