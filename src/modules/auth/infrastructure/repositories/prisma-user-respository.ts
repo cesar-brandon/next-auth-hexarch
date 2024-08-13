@@ -2,12 +2,9 @@ import { db } from "@/lib/prisma";
 import { User } from "../../domain/entities/user";
 
 export async function findByEmail(identifier: string): Promise<User | null> {
-  const user = await db.user.findUnique({
+  const user = await db.user.findFirst({
     where: {
-      email: identifier,
-      or: {
-        username: identifier,
-      },
+      OR: [{ email: identifier }, { username: identifier }],
     },
   });
 
@@ -15,9 +12,10 @@ export async function findByEmail(identifier: string): Promise<User | null> {
 
   return {
     id: user.id,
-    name: user.name,
+    name: user.name ?? user.username,
     username: user.username,
     email: user.email,
-    password: user.password,
+    image: user.image ?? "",
+    password: user.password ?? "",
   };
 }

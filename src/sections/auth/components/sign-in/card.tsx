@@ -17,7 +17,7 @@ import { Separator } from "@/components/ui/separator";
 export function SignInCard() {
   const googleAction = async () => {
     "use server";
-    await signIn("google");
+    await signIn("google", { redirectTo: "/dashboard" });
   };
 
   return (
